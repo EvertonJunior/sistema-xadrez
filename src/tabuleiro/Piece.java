@@ -7,6 +7,7 @@ public abstract class Piece {
 
 	public Piece(Board board) {
 		this.board = board;
+		position = null;
 	}
 
 	protected Board getBoard() {
@@ -14,15 +15,15 @@ public abstract class Piece {
 	}
 
 	public abstract boolean[][] possibleMoves();
-	
+
 	public boolean possibleMove(Position position) {
 		return possibleMoves()[position.getRow()][position.getColumn()];
 	}
-	
-	public boolean isTherePossibleMove() {
-		boolean [][] mat = possibleMoves();
-		for (int i=0;i<mat.length;i++) {
-			for (int j=0; j<mat.length;j++) {
+
+	public boolean isThereAnyPossibleMove() {
+		boolean[][] mat = possibleMoves();
+		for (int i = 0; i < mat.length; i++) {
+			for (int j = 0; j < mat.length; j++) {
 				if (mat[i][j]) {
 					return true;
 				}
@@ -31,6 +32,3 @@ public abstract class Piece {
 		return false;
 	}
 }
-
-	
-
